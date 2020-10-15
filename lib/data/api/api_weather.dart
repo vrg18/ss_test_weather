@@ -1,6 +1,4 @@
-import 'package:meta/meta.dart';
-
-class Weather {
+class ApiWeather {
   final double coordLon; // долгота
   final double coordLat; // широта
   final int weatherId; // Идентификатор погодных условий
@@ -21,47 +19,46 @@ class Weather {
   final int rain3h; // объем дождя за последние 3 часа, мм
   final int snow1h; // объем снега за последний час, мм
   final int snow3h; // объем снега за последние 3 часа, мм
-  final DateTime dt; // время расчета данных, unix, UTC
+  final int dt; // время расчета данных, unix, UTC
   final int sysType;
   final int sysId;
   final String country; // код страны
-  final DateTime sunrise; // время восхода, unix, UTC
-  final DateTime sunset; // время заката, unix, UTC
+  final int sunrise; // время восхода, unix, UTC
+  final int sunset; // время заката, unix, UTC
   final int timezone; // сдвиг в секундах от UTC
   final int cityId; // ID города
   final String cityName; // название города
   final int cod;
 
-  Weather({
-    @required this.coordLon,
-    @required this.coordLat,
-    @required this.weatherId,
-    @required this.weatherMain,
-    @required this.weatherDescription,
-    @required this.weatherIcon,
-    @required this.base,
-    @required this.temp,
-    @required this.feelsLike,
-    @required this.tempMin,
-    @required this.tempMax,
-    @required this.pressure,
-    @required this.humidity,
-    @required this.windSpeed,
-    @required this.windDeg,
-    @required this.clouds,
-    @required this.rain1h,
-    @required this.rain3h,
-    @required this.snow1h,
-    @required this.snow3h,
-    @required this.dt,
-    @required this.sysType,
-    @required this.sysId,
-    @required this.country,
-    @required this.sunrise,
-    @required this.sunset,
-    @required this.timezone,
-    @required this.cityId,
-    @required this.cityName,
-    @required this.cod,
-  });
+  ApiWeather.fromApi(Map<String, dynamic> map)
+      : coordLon = map['coord']['lon'],
+        coordLat = map['coord']['lat'],
+        weatherId = map['weather']['0']['id'],
+        weatherMain = map['weather']['0']['main'],
+        weatherDescription = map['weather']['0']['description'],
+        weatherIcon = map['weather']['0']['icon'],
+        base = map['base'],
+        temp = map['main']['temp'],
+        feelsLike = map['main']['feels_like'],
+        tempMin = map['main']['temp_min'],
+        tempMax = map['main']['temp_max'],
+        pressure = map['main']['pressure'],
+        humidity = map['main']['humidity'],
+        windSpeed = map['wind']['speed'],
+        windDeg = map['wind']['deg'],
+        clouds = map['clouds']['all'],
+        rain1h = map['rain']['1h'],
+        rain3h = map['rain']['3h'],
+        snow1h = map['snow']['1h'],
+        snow3h = map['snow']['3h'],
+        dt = map['dt'],
+        sysType = map['sys']['type'],
+        sysId = map['sys']['id'],
+        country = map['sys']['country'],
+        sunrise = map['sys']['sunrise'],
+        sunset = map['sys']['sunset'],
+        timezone = map['timezone'],
+        cityId = map['id'],
+        cityName = map['name'],
+        cod = map['cod'];
 }
