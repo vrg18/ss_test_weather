@@ -1,10 +1,10 @@
 class ApiWeather {
   final double coordLon; // долгота
   final double coordLat; // широта
-  final int weatherId; // Идентификатор погодных условий
-  final String weatherMain; // Группа погодных параметров (Дождь, Снег и др.)
-  final String weatherDescription; // Погодные условия в группе
-  final String weatherIcon; // Идентификатор значка погоды
+  final int weatherId; // идентификатор погодных условий
+  final String weatherMain; // группа погодных параметров (дождь, снег и др.)
+  final String weatherDescription; // погодные условия в группе
+  final String weatherIcon; // идентификатор значка погоды
   final String base;
   final double temp; // температура
   final double feelsLike; // температура по ощущению

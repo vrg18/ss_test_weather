@@ -1,4 +1,4 @@
-import 'package:ss_test_weather/data/api/api_weather.dart';
+import 'package:ss_test_weather/data/api/model/api_weather.dart';
 import 'package:ss_test_weather/domain/model/weather.dart';
 
 class WeatherMapper {

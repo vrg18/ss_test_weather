@@ -3,10 +3,10 @@ import 'package:meta/meta.dart';
 class Weather {
   final double coordLon; // долгота
   final double coordLat; // широта
-  final int weatherId; // Идентификатор погодных условий
-  final String weatherMain; // Группа погодных параметров (Дождь, Снег и др.)
-  final String weatherDescription; // Погодные условия в группе
-  final String weatherIcon; // Идентификатор значка погоды
+  final int weatherId; // идентификатор погодных условий
+  final String weatherMain; // группа погодных параметров (дождь, снег и др.)
+  final String weatherDescription; // гогодные условия в группе
+  final String weatherIcon; // идентификатор значка погоды
   final String base;
   final double temp; // температура
   final double feelsLike; // температура по ощущению
@@ -49,10 +49,10 @@ class Weather {
     @required this.windSpeed,
     @required this.windDeg,
     @required this.clouds,
-    @required this.rain1h,
-    @required this.rain3h,
-    @required this.snow1h,
-    @required this.snow3h,
+    this.rain1h,
+    this.rain3h,
+    this.snow1h,
+    this.snow3h,
     @required this.dt,
     @required this.sysType,
     @required this.sysId,
