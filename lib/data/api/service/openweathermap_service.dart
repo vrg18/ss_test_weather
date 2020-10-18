@@ -11,7 +11,7 @@ class OpenweathermapService {
 
   Future<ApiWeather> getWeather(GetWeatherBody body) async {
     final response = await _dio.get(
-      '/json',
+      '/data/2.5/weather',
       queryParameters: body.toApi(),
     );
     return ApiWeather.fromApi(response.data);
