@@ -9,7 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final _cityIdController = TextEditingController();
+//  final _cityIdController = TextEditingController();
 
   HomeState _homeState;
 
@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            _getRowInput(),
+            //_getRowInput(),
             SizedBox(height: 20),
             RaisedButton(
               child: Text('Получить'),
@@ -50,21 +50,21 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _getRowInput() {
-    return Row(
-      children: [
-        Expanded(
-          child: TextField(
-            controller: _cityIdController,
-            autofocus: false,
-            keyboardType:
-                TextInputType.numberWithOptions(decimal: true, signed: true),
-            decoration: InputDecoration(hintText: 'Код города'),
-          ),
-        ),
-      ],
-    );
-  }
+  // Widget _getRowInput() {
+  //   return Row(
+  //     children: [
+  //       Expanded(
+  //         child: TextField(
+  //           controller: _cityIdController,
+  //           autofocus: false,
+  //           keyboardType:
+  //               TextInputType.numberWithOptions(decimal: true, signed: true),
+  //           decoration: InputDecoration(hintText: 'Код города'),
+  //         ),
+  //       ),
+  //     ],
+  //   );
+  // }
 
   Widget _getWeatherInfo() {
     return Observer(
@@ -73,14 +73,24 @@ class _HomeState extends State<Home> {
           return Center(
             child: CircularProgressIndicator(),
           );
-        if (_homeState.weather == null) return Container();
+        if (_homeState.locationError) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text('Не удалось определить месторасположение'),
+            ],
+          );
+        }
+        if (_homeState.weather == null)
+          return Container();
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text('Город: ${_homeState.weather.cityName}'),
             Text('Температура:  ${_homeState.weather.temp.toString()} °'),
             Text('Влажность:  ${_homeState.weather.humidity.toString()} %'),
-            Text('Давление:  ${_homeState.weather.pressure.toString()} мм рт. ст.'),
+            Text(
+                'Давление:  ${_homeState.weather.pressure.toString()} мм рт. ст.'),
           ],
         );
       },
@@ -88,8 +98,7 @@ class _HomeState extends State<Home> {
   }
 
   void _getWeather() {
-    // здесь получаем данные
-    final cityId = int.tryParse(_cityIdController.text);
-    _homeState.getWeather(cityId: cityId);
+//    final cityId = int.tryParse(_cityIdController.text);
+    _homeState.getWeather(cityId: 566199);
   }
 }

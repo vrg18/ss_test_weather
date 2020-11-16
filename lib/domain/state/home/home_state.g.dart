@@ -39,6 +39,21 @@ mixin _$HomeState on HomeStateBase, Store {
     });
   }
 
+  final _$locationErrorAtom = Atom(name: 'HomeStateBase.locationError');
+
+  @override
+  bool get locationError {
+    _$locationErrorAtom.reportRead();
+    return super.locationError;
+  }
+
+  @override
+  set locationError(bool value) {
+    _$locationErrorAtom.reportWrite(value, super.locationError, () {
+      super.locationError = value;
+    });
+  }
+
   final _$getWeatherAsyncAction = AsyncAction('HomeStateBase.getWeather');
 
   @override
@@ -50,7 +65,8 @@ mixin _$HomeState on HomeStateBase, Store {
   String toString() {
     return '''
 weather: ${weather},
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+locationError: ${locationError}
     ''';
   }
 }
